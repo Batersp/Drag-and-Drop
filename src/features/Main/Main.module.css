@@ -1,0 +1,30 @@
+.mainContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.main {
+    width: 600px;
+    padding: 50px;
+}
+
+
+
+.tableHeader {
+    font-weight: bold;
+    font-size: 50px;
+}
+
+.body {
+    width: 100px;
+}
+
+
+
+.cell {
+    cursor: grab;
+}
+
+.name {
+    font-size: 20px;
+}
