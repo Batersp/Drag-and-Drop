@@ -1,6 +1,6 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
 import thunkMiddleware from 'redux-thunk'
-import {mainReducer} from "../features/TableColumn/mainReducer";
+import {mainReducer} from "../features/Main/mainReducer";
 
 export const rootReducer = combineReducers({
     main: mainReducer

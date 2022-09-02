@@ -2,10 +2,10 @@ import React, {useState} from 'react';
 import style from "./Main.module.css";
 import {Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@mui/material";
 import {useSelector} from "react-redux";
-import {getState} from "../TableColumn/selectors";
+import {getState} from "./selectors";
 import {useAppDispatch} from "../../utils/redux-utils";
 import {BoardType, ItemType} from "../../utils/types";
-import {addItem, removeItem} from "../TableColumn/mainReducer";
+import {addItem, removeItem} from "./mainReducer";
 
 export const Main = () => {
 
