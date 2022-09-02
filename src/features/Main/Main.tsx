@@ -36,8 +36,20 @@ export const Main = () => {
     function dragDropHandler(e: React.DragEvent<HTMLDivElement>, el: BoardType, item: ItemType) {
         e.preventDefault()
         e.currentTarget.style.background = 'white'
+        const id = item.id
         dispatch(removeItem({el: currentBoard, item: currentItem}))
-        dispatch(addItem({el, thisBoardItem: item ,item: currentItem}))
+        dispatch(addItem({el, thisBoardItemId: id ,item: currentItem}))
+    }
+
+    function dropBoardHandler(e: React.DragEvent<HTMLDivElement>, el: BoardType){
+        e.preventDefault()
+        dispatch(removeItem({el: currentBoard, item: currentItem}))
+        dispatch(addItem({el, thisBoardItemId: 0, item: currentItem}))
+    }
+
+    function overBoardHandler(e: React.DragEvent<HTMLDivElement>) {
+        e.preventDefault()
+
     }
 
 
@@ -54,23 +66,33 @@ export const Main = () => {
                             </TableRow>
                         </TableHead>
                         <TableBody className={style.body}>
-                            {el.item.map((item) => (
-                                <TableRow
-                                    className={style.row}
-                                    key={item.id}
-                                    sx={{'&:last-child td, &:last-child th': {border: 0}}}
-                                    draggable={true}
-                                    onDragStart={(e) => dragStartHandler(e, el, item)}
-                                    onDragLeave={(e) => dragLeaveHandler(e)}
-                                    onDragEnd={(e) => dragEndHandler(e)}
-                                    onDragOver={(e) => dragOverHandler(e)}
-                                    onDrop={(e) => dragDropHandler(e, el, item)}
-                                >
-                                    <TableCell className={style.cell} component="th" scope="row">
-                                        <div className={style.name}>{item.name}</div>
+                            {el.item.length
+                                ?     el.item.map((item) => (
+                                        <TableRow
+                                            className={style.row}
+                                            key={item.id}
+                                            sx={{'&:last-child td, &:last-child th': {border: 0}}}
+                                            draggable={true}
+                                            onDragStart={(e) => dragStartHandler(e, el, item)}
+                                            onDragLeave={(e) => dragLeaveHandler(e)}
+                                            onDragEnd={(e) => dragEndHandler(e)}
+                                            onDragOver={(e) => dragOverHandler(e)}
+                                            onDrop={(e) => dragDropHandler(e, el, item)}
+                                        >
+                                            <TableCell className={style.cell} component="th" scope="row">
+                                                <div className={style.name}>{item.name}</div>
+                                            </TableCell>
+                                        </TableRow>
+                                    ))
+                                :<TableRow onDragOver={(e) => overBoardHandler(e)}
+                                           onDrop={(e) => dropBoardHandler(e, el)}>
+                                    <TableCell>
+                                        <div className={style.text}>add item</div>
                                     </TableCell>
                                 </TableRow>
-                            ))}
+
+                            }
+
                         </TableBody>
                     </Table>
                 </TableContainer>

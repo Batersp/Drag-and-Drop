@@ -31,3 +31,11 @@
     text-align: center;
     color: lightpink;
 }
+
+.text {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bolder;
+    color: red;
+
+}

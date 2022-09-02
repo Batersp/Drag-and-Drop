@@ -34,10 +34,10 @@ export const slice = createSlice({
             const indexEl = state[indexBoard].item.findIndex(el => el.id === action.payload.item.id)
             state[indexBoard].item.splice(indexEl, 1)
         },
-        addItem(state, action: PayloadAction<{el: BoardType | null, thisBoardItem: ItemType | null,item: ItemType | null}>) {
+        addItem(state, action: PayloadAction<{el: BoardType | null, thisBoardItemId: number,item: ItemType | null}>) {
             // @ts-ignore
             const indexBoard = state.findIndex(el => el.id === action.payload.el.id)
-            const indexEl = state[indexBoard].item.findIndex(el => el.id === action.payload.thisBoardItem?.id)
+            const indexEl = state[indexBoard].item.findIndex(el => el.id === action.payload.thisBoardItemId)
             // @ts-ignore
             state[indexBoard].item.splice(indexEl + 1, 0, action.payload.item)
          /*   state[indexBoard].item.unshift(action.payload.item)*/
