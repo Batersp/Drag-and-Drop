@@ -1,14 +1,15 @@
-.mainContainer {
-    display: flex;
-    justify-content: center;
-}
+
 
 .main {
-    width: 600px;
-    padding: 50px;
+    padding: 200px;
+    display: flex;
+    justify-content: center;
+
 }
 
+.table {
 
+}
 
 .tableHeader {
     font-weight: bold;
@@ -27,4 +28,6 @@
 
 .name {
     font-size: 20px;
+    text-align: center;
+    color: lightpink;
 }
